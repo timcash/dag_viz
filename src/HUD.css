@@ -1,0 +1,88 @@
+.hud-container {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 0;
+    z-index: 1000;
+    pointer-events: none; /* Allow clicks to pass to canvas when not on buttons */
+}
+
+.thumb-button-wrapper {
+    position: absolute;
+    bottom: 20px;
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    pointer-events: auto;
+}
+
+.thumb-button-wrapper.left {
+    left: 40px;
+}
+
+.thumb-button-wrapper.right {
+    right: 40px;
+}
+
+.thumb-button {
+    width: 100px;
+    height: 100px;
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid white;
+    color: white;
+    font-family: 'Inter', sans-serif;
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+}
+
+.thumb-button:hover {
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+}
+
+.sub-menu {
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 15px;
+    margin-bottom: 20px;
+    height: 0;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.sub-menu.active {
+    height: auto;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.sub-button {
+    width: 80px;
+    height: 80px;
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    color: rgba(255, 255, 255, 0.8);
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.2s ease;
+}
+
+.sub-button:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    border-color: white;
+}

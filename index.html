@@ -62,7 +62,17 @@
             <div>Scroll to zoom out</div>
         </div>
     </div>
-    <script type="module" src="./src/App.js"></script>
+    <script type="module" src="./dist/App.js"></script>
+    <script>
+        // Live Reload
+        const socket = new WebSocket(`ws://${location.host}/live-reload`);
+        socket.onmessage = (event) => {
+            if (event.data === 'reload') {
+                console.log('Live Reloading...');
+                location.reload();
+            }
+        };
+    </script>
 </body>
 
 </html>
