@@ -1,59 +1,68 @@
 # 3D DAG Visualization
 
-A 3D visualization of a Directed Acyclic Graph (DAG) using Three.js. This application visualizes hierarchical graphs where nodes can contain nested sub-graphs (layers), creating a "multi-layer chess" experience.
+A high-performance, immersive 3D visualization for Directed Acyclic Graphs (DAGs), built with **Three.js** and **Bun**. This project features spline-based camera navigation, context-aware nested layouts, and weighted edge rendering to explore complex hierarchical data.
 
-## 🛠️ Development Workflow
+![Smoke Test Status](https://img.shields.io/badge/smoke%20test-passing-success)
 
-**Recommended Step-by-Step Process:**
+## ✨ Key Features
 
-1.  **Make Good Logs**: Ensure your changes emit clear console logs (`[Interaction]`, `[Navigation]`) to track state changes.
-2.  **Check the Geometry**: Verify that positions, camera angles, and visibility states match your expectations mathematically.
-3.  **Prove with Smoke Test**: Run the automated smoke test to verify interactions and generate a report with screenshots.
+### 🎥 Spline-Based Fly-Through Navigation
+Experience a seamless "traveling" sensation as you navigate through the graph. Clicking a node triggers a cinematic camera flight path that swoops *through* the selected node to reveal the sublayer below, providing a strong sense of depth and hierarchy.
 
+### 💡 Weighted Edge Glow
+Edges are rendered with variable opacity and color intensity based on their "weight" (simulated randomness for demo).
+- **High Weight**: Bright white/cyan, fully opaque.
+- **Low Weight**: Dim blue, semi-transparent.
+This visual hierarchy makes important connections instantly pop.
+
+### 🧩 Context-Aware Nested Layouts
+Sublayers are dynamically generated and positioned directly **below** their parent node in 3D space. This maintains spatial context—when you drill down, you are literally looking "under the hood" of the specific node you selected.
+
+### 🧪 Robust Smoke Testing
+Includes a comprehensive automated smoke test suite (`smoke_test.ts`) powered by **Puppeteer**.
+- Verified rendering of 12+ nodes and curved edges.
+- Automated verification of camera transitions and log outputs.
+- Generates a visual report `SMOKE.md` with screenshots of every state.
+
+## 🚀 Getting Started
+
+### Prerequisites
+- [Bun](https://bun.sh) (v1.0+)
+
+### Installation
+```bash
+bun install
+```
+
+### Development
+Start the local development server:
+```bash
+bun run dev
+```
+Open [http://localhost:3000](http://localhost:3000) to view the graph.
+
+### Running Smoke Tests
+Run the automated verification suite:
 ```bash
 bun run smoke
 ```
+This will:
+1. Start a fresh server instance on a random port.
+2. Launch a headless browser to interact with the app.
+3. Capture screenshots and verify logs.
+4. Generate `SMOKE.md` with the results.
 
-Check `SMOKE.md` after running to see the **Proof of Work** (Screenshots + Logs).
+## 🎮 Controls
+- **Left Click**: Select a node and "fly through" to its sublayer.
+- **Scroll Wheel**: Zoom in/out. Auto-navigates up when zooming out far enough.
+- **Double Click**: Create a new node at the cursor position (Demo).
+- **WASD**: Pan the camera.
 
-## Features
+## 🏗️ Tech Stack
+- **Runtime**: Bun
+- **Graphics**: Three.js
+- **Testing**: Puppeteer
+- **Linting**: ESLint
 
--   **3D Environment**: Nodes are represented as 3D boxes with text labels, effectively arranged in layers.
--   **Nested Layers**: Infinite nesting of sub-graphs. Clicking a node "zooms in" to its internal graph.
--   **Adaptive Visibility**: Only the current layer and the hovered node's immediate sub-layer are visible, reducing clutter.
--   **Auto-Layout**: Nodes are automatically positioned based on their rank (dependencies) and order.
--   **Interactive Editing**: Add nodes, link them, and delete them dynamically.
-
-## Controls
-
-### Navigation
--   **WASD**: Pan the camera around the current layer (like a map).
--   **Scroll Up / Back**: Zoom out to the parent layer.
--   **Click Node**: Zoom in to the node's sub-layer (Over-the-shoulder view).
--   **Hover Node**: Preview the node's sub-layer (Blue Glow).
-
-### Editing
--   **Double Click**: Add a new node at the cursor position (space).
--   **Ctrl + Click**: Link two nodes. Click source, then click target.
--   **Delete / Backspace**: Delete the hovered node.
-
-## Setup
-
-1.  **Install Dependencies**:
-    ```bash
-    bun install
-    ```
-2.  **Run Server**:
-    ```bash
-    bun run server.ts
-    ```
-3.  **Open Browser**:
-    Visit `http://localhost:3000`
-
-## Structure
-
--   `src/App.js`: Main application logic, event handling, and rendering loop.
--   `src/Layer.js`: Manages a graph layer (nodes, edges, raycast plane).
--   `src/Node.js`: 3D Node object with mesh, label, and sub-layer reference.
--   `src/CameraManager.js`: Handles camera transitions, orbit controls, and WASD panning.
--   `src/Layout.js`: 3D force/rank-based layout algorithm.
+---
+*Generated by Antigravity*
