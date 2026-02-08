@@ -1,0 +1,23 @@
+{
+  "name": "dag-viz",
+  "version": "1.0.0",
+  "main": "server.ts",
+  "type": "module",
+  "dependencies": {
+    "eslint": "^10.0.0",
+    "eslint-config-standard": "^17.1.0",
+    "eslint-plugin-import": "^2.32.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^7.2.1",
+    "puppeteer": "^21.0.0",
+    "three": "^0.182.0",
+    "three-orbit-controls": "^82.1.0"
+  },
+  "scripts": {
+    "start": "bun run server.ts",
+    "dev": "bun --watch run server.ts",
+    "test": "bun run test.ts",
+    "smoke": "bun run lint && bun run smoke_test.ts",
+    "lint": "eslint src/"
+  }
+}

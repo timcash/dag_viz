@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D DAG Viz</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            background-color: #000;
+            color: white;
+            font-family: 'Inter', sans-serif;
+        }
+
+        #canvas-container {
+            width: 100vw;
+            height: 100vh;
+        }
+
+        #ui-layer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            width: 100%;
+            height: 100%;
+        }
+
+        #controls {
+            padding: 20px;
+            pointer-events: auto;
+        }
+
+        .label {
+            position: absolute;
+            color: white;
+            font-size: 14px;
+            font-weight: bold;
+            pointer-events: none;
+            user-select: none;
+            text-shadow: 0 0 4px #000;
+        }
+    </style>
+    <script type="importmap">
+        {
+            "imports": {
+                "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+                "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <div id="canvas-container"></div>
+    <div id="ui-layer">
+        <div id="controls">
+            <div>Double-click to add node</div>
+            <div>Click node to enter</div>
+            <div>Scroll to zoom out</div>
+        </div>
+    </div>
+    <script type="module" src="./src/App.js"></script>
+</body>
+
+</html>
