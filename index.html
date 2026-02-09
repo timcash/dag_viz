@@ -65,13 +65,16 @@
     <script type="module" src="./dist/App.js"></script>
     <script>
         // Live Reload
-        const socket = new WebSocket(`ws://${location.host}/live-reload`);
-        socket.onmessage = (event) => {
-            if (event.data === 'reload') {
-                console.log('Live Reloading...');
-                location.reload();
-            }
-        };
+        if (!window.DISABLE_LIVE_RELOAD) {
+            const socket = new WebSocket(`ws://${location.host}/live-reload`);
+            socket.onmessage = (event) => {
+                if (event.data === 'reload' && !window.DISABLE_LIVE_RELOAD) {
+                    console.log('Live Reloading...');
+                    location.reload();
+                }
+            };
+            window.socket = socket;
+        }
     </script>
 </body>
 

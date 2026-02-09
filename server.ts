@@ -8,19 +8,23 @@ const server = Bun.serve({
     port: port,
     async fetch(req, server) {
         const url = new URL(req.url);
-        const path = url.pathname === "/" ? "/index.html" : url.pathname;
+        let path = url.pathname;
+        console.log(`[Server] ${req.method} ${path}`);
 
         if (path === "/live-reload") {
             const success = server.upgrade(req);
             return success ? undefined : new Response("WebSocket upgrade failed", { status: 400 });
         }
 
-        const file = Bun.file(`.${path}`);
+        // Try direct file first
+        let file = Bun.file(`.${path}`);
         if (await file.exists()) {
             return new Response(file);
         }
 
-        return new Response("Not Found", { status: 404 });
+        // Default to index.html for root or any unmatched path (SPA)
+        const index = Bun.file("./index.html");
+        return new Response(index);
     },
     websocket: {
         open(ws) {
@@ -43,6 +47,7 @@ const reload = (filename: string) => {
 };
 
 watch("./src", watchOptions, (event, filename) => filename && reload(filename));
+watch("./src2", watchOptions, (event, filename) => filename && reload(filename));
 watch("./dist", watchOptions, (event, filename) => filename && reload(filename));
 watch("./index.html", (event, filename) => reload("index.html"));
 

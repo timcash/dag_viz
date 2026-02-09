@@ -15,12 +15,13 @@
   },
   "scripts": {
     "start": "bun run server.ts",
-    "build": "bun build ./src/App.ts --outdir ./dist --bundle",
-    "dev": "bun build ./src/App.ts --outdir ./dist --watch & bun run server.ts",
+    "build": "bun build ./src2/App.ts --outdir ./dist --bundle",
+    "dev": "bun build ./src2/App.ts --outdir ./dist --watch & bun run server.ts",
     "test": "bun run test.ts",
     "smoke": "bun run lint && bun run smoke_test.ts",
     "spline": "bun run tests/spline_test/smoke.ts",
     "hover": "bun run tests/hover_test/smoke.ts",
+    "test_v2": "bun run src2/test/run_all.ts",
     "lint": "eslint src/"
   },
   "devDependencies": {
