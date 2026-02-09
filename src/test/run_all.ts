@@ -2,19 +2,19 @@ import { execSync } from 'child_process';
 import * as fs from 'fs';
 import * as path from 'path';
 
-const TEST_MD = 'src2/TEST.md';
-const TEST_BAK = 'src2/TEST.md.bak';
-const SCREENSHOTS_DIR = 'src2/screenshots';
-const SCREENSHOTS_BAK = 'src2/screenshots.bak';
+const TEST_MD = 'src/TEST.md';
+const TEST_BAK = 'src/TEST.md.bak';
+const SCREENSHOTS_DIR = 'src/screenshots';
+const SCREENSHOTS_BAK = 'src/screenshots.bak';
 
 const tests = [
-    'src2/test/01_infrastructure.test.ts',
-    'src2/test/02_architecture.test.ts',
-    'src2/test/03_edges.test.ts',
-    'src2/test/04_interaction.test.ts',
-    'src2/test/05_navigation.test.ts',
-    'src2/test/06_ui.test.ts',
-    'src2/test/07_editing.test.ts'
+    'src/test/01_infrastructure.test.ts',
+    'src/test/02_architecture.test.ts',
+    'src/test/03_edges.test.ts',
+    'src/test/04_interaction.test.ts',
+    'src/test/05_navigation.test.ts',
+    'src/test/06_ui.test.ts',
+    'src/test/07_editing.test.ts'
 ];
 
 function prepareReport() {

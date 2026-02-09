@@ -24,10 +24,6 @@
     },
     "include": [
         "src/**/*.ts",
-        "src2/**/*.ts",
-        "tests/**/*.ts",
-        "smoke_test.ts",
-        "server.ts",
-        "test_v2.ts"
+        "server.ts"
     ]
 }

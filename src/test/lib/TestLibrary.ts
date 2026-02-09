@@ -4,8 +4,8 @@ import * as fs from 'fs';
 import * as path from 'path';
 import { PixelUtil } from '../pixel_util';
 
-export const TEST_MD = 'src2/TEST.md';
-export const SCREENSHOTS_DIR = 'src2/screenshots';
+export const TEST_MD = 'src/TEST.md';
+export const SCREENSHOTS_DIR = 'src/screenshots';
 export const PORT = 3001;
 
 export class TestLibrary {

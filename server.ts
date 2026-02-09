@@ -47,7 +47,6 @@ const reload = (filename: string) => {
 };
 
 watch("./src", watchOptions, (event, filename) => filename && reload(filename));
-watch("./src2", watchOptions, (event, filename) => filename && reload(filename));
 watch("./dist", watchOptions, (event, filename) => filename && reload(filename));
 watch("./index.html", (event, filename) => reload("index.html"));
 
