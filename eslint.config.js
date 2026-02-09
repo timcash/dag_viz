@@ -1,10 +1,14 @@
+import tseslint from '@typescript-eslint/eslint-plugin';
+import tsparser from '@typescript-eslint/parser';
+
 export default [
     {
-        ignores: ["dist/**"],
+        ignores: ["dist/**", "node_modules/**", "*.bak"],
     },
     {
-        files: ["src/**/*.js"],
+        files: ["src/**/*.ts", "src3/**/*.ts", "src4/**/*.ts", "server.ts", "template_src.ts"],
         languageOptions: {
+            parser: tsparser,
             ecmaVersion: 2022,
             sourceType: "module",
             globals: {
@@ -17,8 +21,12 @@ export default [
                 prompt: "readonly"
             }
         },
+        plugins: {
+            "@typescript-eslint": tseslint
+        },
         rules: {
-            "no-unused-vars": "warn",
+            "no-unused-vars": "off", // Use TS rule instead
+            "@typescript-eslint/no-unused-vars": "warn",
             "no-console": "off"
         }
     }

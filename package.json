@@ -17,12 +17,21 @@
     "start": "bun run server.ts",
     "build": "bun build ./src/App.ts --outdir ./dist --bundle",
     "dev": "bun build ./src/App.ts --outdir ./dist --watch & bun run server.ts",
+    "build_v3": "bun build ./src3/App.ts --outdir ./dist --bundle",
+    "dev_v3": "bun build ./src3/App.ts --outdir ./dist --watch & bun run server.ts",
     "test": "bun run src/test/run_all.ts",
     "test_v2": "bun run src/test/run_all.ts",
-    "lint": "eslint src/"
+    "test_v3": "bun run src3/test/run_all.ts",
+    "lint": "eslint .",
+    "build_src4": "bun build ./src4/App.ts --outdir ./dist --bundle",
+    "test_src4": "bun run ./src4/test/run_all.ts",
+    "build_src5": "bun build ./src5/App.ts --outdir ./dist --bundle",
+    "test_src5": "bun run ./src5/test/run_all.ts"
   },
   "devDependencies": {
     "@types/three": "^0.182.0",
+    "@typescript-eslint/eslint-plugin": "^8.54.0",
+    "@typescript-eslint/parser": "^8.54.0",
     "bun-types": "^1.3.8"
   }
 }
